@@ -1,4 +1,4 @@
-# Reconrib
+# Recontrib
 
 React Component that implements GiHub's commit graph UI.
 
@@ -6,10 +6,10 @@ React Component that implements GiHub's commit graph UI.
 
 ## Usuage
 
-1. Add the React UI tooltip CSS
+1. Add the Reach UI tooltip CSS
 
 ```js
-import '@react/tooltip/css';
+import '@reach/tooltip/style.css';
 ```
 
 2. Use the component and pass the data(from https://api.github.com/repos/:owner/:repo/stats/commit_activity)
