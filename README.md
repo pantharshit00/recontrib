@@ -1,6 +1,6 @@
 # Recontrib
 
-React Component that implements GiHub's commit graph UI.
+React Component that implements GiHub's commit graph UI. https://pantharshit.github.io/recontrib
 
 ![image](https://user-images.githubusercontent.com/22195362/57941632-17990f80-78ed-11e9-86b3-939f7ac1209b.png)
 
@@ -33,3 +33,17 @@ interface WeekData {
   week: number; // Timestamp in seconds of the seconds of the starting of the week
 }
 ```
+
+## Props
+
+```ts
+interface Props {
+  data: Array<WeekData>; // data
+  gridSize?: number; // size of the tile
+  fontSize?: string; // fontSize of months and weekdays
+}
+```
+
+---
+
+MIT️ ©️ [Harshit Pant](https://twitter.com/pantharshit00) 2019
