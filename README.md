@@ -1,6 +1,6 @@
 # Recontrib
 
-React Component that implements GiHub's commit graph UI. https://pantharshit.github.io/recontrib
+React Component that implements GiHub's commit graph UI. https://pantharshit00.github.io/recontrib
 
 ![image](https://user-images.githubusercontent.com/22195362/57941632-17990f80-78ed-11e9-86b3-939f7ac1209b.png)
 
@@ -24,7 +24,7 @@ const App = () => {
 };
 ```
 
-Data is structured as following. You can directly pass the data from the GitHub API(https://api.github.com/repos/:owner/:repo/commit_activity):
+Data is structured as following. You can directly pass the data from the GitHub API(https://api.github.com/repos/:owner/:repo/stats/commit_activity):
 
 ```ts
 interface WeekData {
