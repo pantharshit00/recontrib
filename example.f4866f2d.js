@@ -267,4 +267,4 @@ var r,e;module.exports=require("./factoryWithThrowingShims")();
 },{}],"zo2T":[function(require,module,exports) {
 "use strict";var e=this&&this.__importStar||function(e){if(e&&e.__esModule)return e;var r={};if(null!=e)for(var t in e)Object.hasOwnProperty.call(e,t)&&(r[t]=e[t]);return r.default=e,r};Object.defineProperty(exports,"__esModule",{value:!0}),require("react-app-polyfill/ie11");var r=e(require("react")),t=e(require("react-dom"));require("@reach/tooltip/styles.css");var a=require("../."),i=require("./data"),l=function(){return r.createElement("div",null,r.createElement(a.Recontrib,{data:i.data}))};t.render(r.createElement(l,null),document.getElementById("root"));
 },{"react-app-polyfill/ie11":"lczo","react":"1n8/","react-dom":"NKHc","@reach/tooltip/styles.css":"DrFq","../.":"+5QH","./data":"+Kmw"}]},{},["zo2T"], null)
-//# sourceMappingURL=/example.f4866f2d.js.map
+//# sourceMappingURL=/recontrib/example.f4866f2d.js.map
