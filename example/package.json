@@ -8,15 +8,24 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "react-app-polyfill": "^1.0.0"
+    "@reach/tooltip": "^0.2.0",
+    "bootstrap": "^4.3.1",
+    "prismjs": "^1.16.0",
+    "react": "^16.8.0",
+    "react-app-polyfill": "^1.0.0",
+    "react-dom": "^16.8.0",
+    "reactstrap": "^8.0.0"
   },
   "alias": {
     "react": "../node_modules/react",
     "react-dom": "../node_modules/react-dom"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@types/prismjs": "^1.16.0",
     "@types/react": "^16.8.15",
     "@types/react-dom": "^16.8.4",
+    "@types/reactstrap": "^8.0.1",
     "parcel": "^1.12.3",
     "typescript": "^3.4.5"
   }

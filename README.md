@@ -12,7 +12,7 @@ React Component that implements GiHub's commit graph UI.
 import '@reach/tooltip/style.css';
 ```
 
-2. Use the component and pass the data(from https://api.github.com/repos/:owner/:repo/stats/commit_activity)
+2. Use the component and pass the data
 
 ```js
 const App = () => {
@@ -22,4 +22,14 @@ const App = () => {
     </div>
   );
 };
+```
+
+Data is structured as following. You can directly pass the data from the GitHub API(https://api.github.com/repos/:owner/:repo/commit_activity):
+
+```ts
+interface WeekData {
+  days: number[]; // commits in individual days in the week
+  total: number; // total number commits in the week
+  week: number; // Timestamp in seconds of the seconds of the starting of the week
+}
 ```
