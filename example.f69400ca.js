@@ -30931,53 +30931,41 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function d(t, e) {
-  var r = !1;
-  "#" == t[0] && (t = t.slice(1), r = !0);
-  var i = parseInt(t, 16),
-      o = (i >> 16) + e;
-  o > 255 ? o = 255 : o < 0 && (o = 0);
-  var a = (i >> 8 & 255) + e;
-  a > 255 ? a = 255 : a < 0 && (a = 0);
-  var n = (255 & i) + e;
-  return n > 255 ? n = 255 : n < 0 && (n = 0), (r ? "#" : "") + (n | a << 8 | o << 16).toString(16);
-}
-
-var f = function f(t, e) {
-  var r = t.left + t.width / 2,
-      i = r - e.width / 2,
-      o = window.innerWidth - e.width - 2;
+var d = function d(t, e) {
+  var i = t.left + t.width / 2,
+      o = i - e.width / 2,
+      r = window.innerWidth - e.width - 2;
   return {
-    left: Math.min(Math.max(2, i), o) + window.scrollX,
+    left: Math.min(Math.max(2, o), r) + window.scrollX,
     top: t.bottom + 8 + window.scrollY
   };
 },
     h = function h(_ref) {
-  var o = _ref.children,
+  var r = _ref.children,
       a = _ref.label,
-      d = _ref.ariaLabel;
+      h = _ref.ariaLabel;
 
   var _n = (0, _tooltip.useTooltip)(),
       _n2 = _slicedToArray(_n, 2),
-      h = _n2[0],
-      c = _n2[1],
-      m = c.isVisible,
-      p = c.triggerRect;
+      f = _n2[0],
+      m = _n2[1],
+      c = m.isVisible,
+      b = m.triggerRect;
 
-  return (0, _react.createElement)(_react.Fragment, null, (0, _react.isValidElement)(o) ? (0, _react.cloneElement)(o, h) : "", m && (0, _react.createElement)(_portal.default, null, (0, _react.createElement)("div", {
+  return (0, _react.createElement)(_react.Fragment, null, (0, _react.isValidElement)(r) ? (0, _react.cloneElement)(r, f) : "", c && (0, _react.createElement)(_portal.default, null, (0, _react.createElement)("div", {
     style: {
       position: "absolute",
-      left: p && p.left - 10 + p.width / 2,
-      top: p && p.bottom + window.scrollY,
+      left: b && b.left - 10 + b.width / 2,
+      top: b && b.bottom + window.scrollY,
       width: 0,
       height: 0,
       borderLeft: "10px solid transparent",
       borderRight: "10px solid transparent",
       borderBottom: "10px solid black"
     }
-  })), (0, _react.createElement)(_tooltip.TooltipPopup, Object.assign({}, c, {
+  })), (0, _react.createElement)(_tooltip.TooltipPopup, Object.assign({}, m, {
     label: a,
-    ariaLabel: d,
+    ariaLabel: h,
     style: {
       background: "black",
       color: "white",
@@ -30986,310 +30974,100 @@ var f = function f(t, e) {
       borderRadius: "3px",
       padding: "0.5em 1em"
     },
-    position: f
+    position: d
   })));
 },
-    c = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    m = function m(_ref2) {
-  var r = _ref2.data;
-  var i = (0, _react.useMemo)(function () {
+    f = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    m = ["#ebedf0", "#c6e48b", "#7bc96f", "#239a3b", "#196127"],
+    c = function c(_ref2) {
+  var i = _ref2.data,
+      _ref2$gridSize = _ref2.gridSize,
+      o = _ref2$gridSize === void 0 ? 10 : _ref2$gridSize,
+      _ref2$fontSize = _ref2.fontSize,
+      n = _ref2$fontSize === void 0 ? "9px" : _ref2$fontSize;
+  var l = (0, _react.useMemo)(function () {
     var t = [];
-    return r.forEach(function (e) {
-      var r = _dayjs.default.unix(e.week).get("month"),
-          i = _dayjs.default.unix(e.week).get("year"),
-          o = t.findIndex(function (t) {
-        return t.id === "".concat(c[r]).concat(i);
+    return i.forEach(function (e) {
+      var i = _dayjs.default.unix(e.week).get("month"),
+          o = _dayjs.default.unix(e.week).get("year"),
+          r = t.findIndex(function (t) {
+        return t.id === "".concat(f[i]).concat(o);
       });
 
-      -1 === o ? t.push({
-        month: c[r],
+      -1 === r ? t.push({
+        month: f[i],
         weeks: [e],
-        id: "".concat(c[r]).concat(i)
-      }) : t[o].weeks.push(e);
+        id: "".concat(f[i]).concat(o)
+      }) : t[r].weeks.push(e);
     }), t;
-  }, [r]);
-  var n = 1;
+  }, [i]);
+  var s = 1;
   return (0, _react.createElement)("svg", {
-    width: "748",
-    height: "112",
+    width: 54 * (o + 4),
+    height: 8 * (o + 4),
     style: {
       boxSizing: "border-box"
     }
   }, (0, _react.createElement)("g", {
     transform: "translate(10, 20)"
-  }, i.map(function (r) {
+  }, l.map(function (i) {
     return (0, _react.createElement)(_react.Fragment, {
-      key: "gh-chart-val-".concat(r.id)
+      key: "gh-chart-val-".concat(i.id)
     }, (0, _react.createElement)("text", {
-      x: 14 * n,
+      x: s * (o + 4),
       y: -7,
       style: {
         fill: "#767676",
-        fontSize: "9px",
+        fontSize: n,
         fontFamily: "sans-serif"
       }
-    }, r.month), r.weeks.map(function (e) {
+    }, i.month), i.weeks.map(function (e) {
       return (0, _react.createElement)("g", {
-        key: "gh-chart-week-".concat(n),
-        transform: "translate(".concat(14 * n++, ",0)")
-      }, e.days.map(function (r, i) {
+        key: "gh-chart-week-".concat(s),
+        transform: "translate(".concat(s++ * (o + 4), ",0)")
+      }, e.days.map(function (i, r) {
         return (0, _react.createElement)(h, {
-          key: "gh-chart-week-".concat(n, "-day-").concat(i),
-          label: "".concat(0 === r ? "No contribution" : "".concat(r, " commit").concat(1 !== r ? "s" : ""), " on ").concat(_dayjs.default.unix(e.week).day(i).format("MMMM D, YYYY"))
+          key: "gh-chart-week-".concat(s, "-day-").concat(r),
+          label: "".concat(0 === i ? "No contribution" : "".concat(i, " commit").concat(1 !== i ? "s" : ""), " on ").concat(_dayjs.default.unix(e.week).day(r).format("MMMM D, YYYY"))
         }, (0, _react.createElement)("rect", {
-          id: "gh-chart-week-".concat(n, "-day-").concat(i),
+          id: "gh-chart-week-".concat(s, "-day-").concat(r),
           x: 0,
-          y: 13 * i,
-          fill: 0 === r ? "#ebedf0" : d("#7bc96f", -r),
-          width: 10,
-          height: 10
+          y: r * (o + 3),
+          fill: m[Math.ceil(Math.min(i, 50) / 50 * m.length)],
+          width: o,
+          height: o
         }));
       }));
     }));
   }), (0, _react.createElement)("text", {
     style: {
       fill: "#767676",
-      fontSize: "9px",
+      fontSize: n,
       fontFamily: "sans-serif"
     },
     dx: "-10",
-    dy: "22"
+    dy: o + 8
   }, "Mon"), (0, _react.createElement)("text", {
     style: {
       fill: "#767676",
-      fontSize: "9px",
+      fontSize: n,
       fontFamily: "sans-serif"
     },
     dx: "-10",
-    dy: "48"
+    dy: 3 * (o + 6)
   }, "Wed"), (0, _react.createElement)("text", {
     style: {
       fill: "#767676",
-      fontSize: "9px",
+      fontSize: n,
       fontFamily: "sans-serif"
     },
     dx: "-10",
-    dy: "73"
+    dy: 5 * (o + 5)
   }, "Fri")));
 };
 
-exports.Recontrib = m;
-},{"react":"../node_modules/react/index.js","dayjs":"../node_modules/dayjs/dayjs.min.js","@reach/tooltip":"../node_modules/@reach/tooltip/es/index.js","@reach/portal":"../node_modules/@reach/portal/es/index.js"}],"data.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.data = [{
-  days: [1, 0, 57, 28, 30, 18, 1],
-  total: 135,
-  week: 1526774400
-}, {
-  days: [0, 18, 11, 11, 27, 50, 3],
-  total: 120,
-  week: 1527379200
-}, {
-  days: [1, 20, 21, 14, 13, 16, 0],
-  total: 85,
-  week: 1527984000
-}, {
-  days: [2, 21, 29, 12, 7, 0, 2],
-  total: 73,
-  week: 1528588800
-}, {
-  days: [0, 18, 24, 21, 17, 10, 1],
-  total: 91,
-  week: 1529193600
-}, {
-  days: [0, 20, 32, 21, 32, 41, 1],
-  total: 147,
-  week: 1529798400
-}, {
-  days: [0, 19, 12, 15, 11, 4, 0],
-  total: 61,
-  week: 1530403200
-}, {
-  days: [1, 6, 0, 1, 5, 4, 0],
-  total: 17,
-  week: 1531008000
-}, {
-  days: [1, 6, 26, 14, 5, 7, 1],
-  total: 60,
-  week: 1531612800
-}, {
-  days: [1, 4, 7, 11, 16, 3, 2],
-  total: 44,
-  week: 1532217600
-}, {
-  days: [21, 25, 13, 26, 10, 5, 0],
-  total: 100,
-  week: 1532822400
-}, {
-  days: [0, 6, 5, 25, 15, 3, 1],
-  total: 55,
-  week: 1533427200
-}, {
-  days: [2, 9, 15, 9, 4, 16, 0],
-  total: 55,
-  week: 1534032000
-}, {
-  days: [4, 12, 4, 1, 6, 17, 2],
-  total: 46,
-  week: 1534636800
-}, {
-  days: [5, 17, 22, 15, 32, 31, 12],
-  total: 134,
-  week: 1535241600
-}, {
-  days: [0, 37, 51, 48, 1, 0, 0],
-  total: 137,
-  week: 1535846400
-}, {
-  days: [9, 113, 74, 30, 21, 5, 0],
-  total: 252,
-  week: 1536451200
-}, {
-  days: [0, 35, 14, 8, 26, 9, 2],
-  total: 94,
-  week: 1537056000
-}, {
-  days: [11, 20, 26, 32, 29, 17, 1],
-  total: 136,
-  week: 1537660800
-}, {
-  days: [5, 12, 17, 16, 38, 23, 7],
-  total: 118,
-  week: 1538265600
-}, {
-  days: [1, 20, 15, 14, 10, 1, 2],
-  total: 63,
-  week: 1538870400
-}, {
-  days: [2, 13, 17, 6, 12, 8, 1],
-  total: 59,
-  week: 1539475200
-}, {
-  days: [1, 12, 22, 19, 7, 4, 2],
-  total: 67,
-  week: 1540080000
-}, {
-  days: [0, 11, 15, 22, 10, 10, 0],
-  total: 68,
-  week: 1540684800
-}, {
-  days: [0, 13, 33, 18, 66, 35, 18],
-  total: 183,
-  week: 1541289600
-}, {
-  days: [1, 7, 33, 37, 25, 13, 0],
-  total: 116,
-  week: 1541894400
-}, {
-  days: [6, 31, 25, 27, 27, 25, 1],
-  total: 142,
-  week: 1542499200
-}, {
-  days: [1, 7, 23, 9, 9, 11, 3],
-  total: 63,
-  week: 1543104000
-}, {
-  days: [0, 13, 40, 29, 38, 13, 1],
-  total: 134,
-  week: 1543708800
-}, {
-  days: [4, 29, 20, 8, 25, 1, 3],
-  total: 90,
-  week: 1544313600
-}, {
-  days: [1, 20, 17, 31, 10, 15, 2],
-  total: 96,
-  week: 1544918400
-}, {
-  days: [0, 0, 1, 1, 3, 5, 1],
-  total: 11,
-  week: 1545523200
-}, {
-  days: [0, 0, 0, 3, 17, 12, 0],
-  total: 32,
-  week: 1546128000
-}, {
-  days: [0, 11, 25, 27, 20, 21, 0],
-  total: 104,
-  week: 1546732800
-}, {
-  days: [2, 17, 22, 17, 17, 19, 6],
-  total: 100,
-  week: 1547337600
-}, {
-  days: [0, 32, 34, 31, 22, 13, 3],
-  total: 135,
-  week: 1547942400
-}, {
-  days: [3, 7, 14, 13, 24, 27, 1],
-  total: 89,
-  week: 1548547200
-}, {
-  days: [1, 25, 22, 32, 20, 16, 0],
-  total: 116,
-  week: 1549152000
-}, {
-  days: [0, 28, 12, 22, 19, 13, 0],
-  total: 94,
-  week: 1549756800
-}, {
-  days: [0, 3, 13, 9, 8, 4, 4],
-  total: 41,
-  week: 1550361600
-}, {
-  days: [2, 12, 11, 31, 29, 28, 14],
-  total: 127,
-  week: 1550966400
-}, {
-  days: [0, 25, 36, 31, 19, 0, 4],
-  total: 115,
-  week: 1551571200
-}, {
-  days: [2, 31, 22, 42, 21, 22, 0],
-  total: 140,
-  week: 1552176000
-}, {
-  days: [0, 16, 20, 18, 14, 28, 0],
-  total: 96,
-  week: 1552780800
-}, {
-  days: [0, 15, 17, 31, 4, 24, 2],
-  total: 93,
-  week: 1553385600
-}, {
-  days: [0, 16, 12, 46, 31, 15, 0],
-  total: 120,
-  week: 1553990400
-}, {
-  days: [1, 31, 17, 25, 10, 20, 0],
-  total: 104,
-  week: 1554595200
-}, {
-  days: [0, 26, 29, 35, 14, 0, 0],
-  total: 104,
-  week: 1555200000
-}, {
-  days: [0, 0, 12, 3, 18, 8, 0],
-  total: 41,
-  week: 1555804800
-}, {
-  days: [0, 17, 12, 3, 19, 4, 0],
-  total: 55,
-  week: 1556409600
-}, {
-  days: [0, 6, 2, 2, 0, 8, 0],
-  total: 18,
-  week: 1557014400
-}, {
-  days: [0, 0, 4, 3, 0, 1, 0],
-  total: 8,
-  week: 1557619200
-}];
-},{}],"node_modules/@babel/runtime/helpers/esm/extends.js":[function(require,module,exports) {
+exports.Recontrib = c;
+},{"react":"../node_modules/react/index.js","dayjs":"../node_modules/dayjs/dayjs.min.js","@reach/tooltip":"../node_modules/@reach/tooltip/es/index.js","@reach/portal":"../node_modules/@reach/portal/es/index.js"}],"node_modules/@babel/runtime/helpers/esm/extends.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -47837,8 +47615,6 @@ require("@reach/tooltip/styles.css");
 
 var _1 = require("../.");
 
-var data_1 = require("./data");
-
 var reactstrap_1 = require("reactstrap");
 
 require("prismjs");
@@ -47859,17 +47635,94 @@ require("bootstrap/dist/css/bootstrap.min.css");
 
 var INSTALL_CODE = "npm install recontrib @reach/tooltip\n# or yarn add recontrib @reach/tooltip\n";
 var CSS_CODE = "import '@reach/tooltip/style.css";
-var APP_CODE = "import React, { useEffect, useState } from 'react';\nimport { Recontrib } from 'recontrib';\n\nconst App = () => {\n let [data, setData] = useState([]);\n useEffect(() => {\n   fetch('https://api.github.com/repos/zeit/next.js/commit_history')\n        .then(res => res.json())\n        .then(res => { setData(data) })\n },[]);\n\n return (\n   <div>\n    <Recontrib data={data} />\n   </div>\n )\n}\n";
-var WEEK_DATA = "interface WeekData {\n  days: number[];\n  total: number;\n  week: number;\n}";
+var APP_CODE = "import React, { useEffect, useState } from 'react';\nimport { Recontrib } from 'recontrib';\n\nconst App = () => {\n let [data, setData] = useState([]);\n useEffect(() => {\n   fetch('https://api.github.com/repos/zeit/next.js/stats/commit_activity')\n        .then(res => res.json())\n        .then(res => { setData(res) })\n },[]);\n\n return (\n   <div>\n    <Recontrib \n      data={data}\n      gridSize={15}\n      fontSize=\"12px\" \n    />\n   </div>\n )\n}\n";
+var WEEK_DATA = "interface WeekData {\n  days: number[]; // commits in individual days in the week\n  total: number; // total number commits in the week\n  week: number; // Timestamp in seconds of the seconds of the starting of the week\n}";
+var PROP = "interface Props {\n  data: Array<WeekData>;\n  gridSize?: number;\n  fontSize?: string;\n}";
 
 var App = function App() {
+  var _a = React.useState({
+    error: null,
+    data: []
+  }),
+      repoData = _a[0],
+      setData = _a[1];
+
+  var _b = React.useState({
+    repo: 'prisma',
+    owner: 'prisma'
+  }),
+      _c = _b[0],
+      repo = _c.repo,
+      owner = _c.owner,
+      setForm = _b[1];
+
+  var _d = React.useState("https://api.github.com/repos/" + owner + "/" + repo + "/stats/commit_activity"),
+      url = _d[0],
+      setUrl = _d[1];
+
+  React.useEffect(function () {
+    fetch(url).then(function (res) {
+      if (res.status === 404) {
+        throw new Error('Not found');
+      }
+
+      return res.json();
+    }).then(function (res) {
+      setData({
+        error: null,
+        data: res
+      });
+    }).catch(function (err) {
+      setData({
+        error: err.message,
+        data: []
+      });
+    });
+  }, [url]);
   return React.createElement(reactstrap_1.Container, null, React.createElement(reactstrap_1.Container, {
     fluid: true
   }, React.createElement("h1", {
-    className: "mt-4 p-2"
-  }, "Recontrib"), React.createElement("p", null, "React Component that implements GitHub Commit Graph")), React.createElement(_1.Recontrib, {
-    data: data_1.data
-  }), React.createElement("hr", null), React.createElement(reactstrap_1.Container, {
+    className: "mt-4 py-2"
+  }, "Recontrib"), React.createElement("p", null, "React Component that implements GitHub Commit Graph")), React.createElement(reactstrap_1.Container, {
+    fluid: true
+  }, React.createElement(reactstrap_1.Form, {
+    onSubmit: function onSubmit(e) {
+      e.preventDefault();
+      setUrl("https://api.github.com/repos/" + owner + "/" + repo + "/stats/commit_activity");
+    },
+    inline: true
+  }, React.createElement(reactstrap_1.Input, {
+    onChange: function onChange(e) {
+      setForm({
+        repo: repo,
+        owner: e.currentTarget.value
+      });
+    },
+    value: owner,
+    className: "mr-2",
+    type: "text",
+    id: "repo",
+    placeholder: "owner"
+  }), ' ', "/", React.createElement(reactstrap_1.Input, {
+    id: "owner",
+    value: repo,
+    onChange: function onChange(e) {
+      setForm({
+        owner: owner,
+        repo: e.currentTarget.value
+      });
+    },
+    className: "ml-2",
+    type: "text",
+    placeholder: "repo"
+  }), React.createElement(reactstrap_1.Input, {
+    type: "submit",
+    hidden: true
+  })), repoData.data && repoData.data.length ? React.createElement(_1.Recontrib, {
+    data: repoData.data,
+    gridSize: 15,
+    fontSize: "12px"
+  }) : repoData.error ? React.createElement("p", null, repoData.error) : 'Loading....'), React.createElement("hr", null), React.createElement(reactstrap_1.Container, {
     fluid: true,
     className: "mt-4"
   }, React.createElement("h3", null, "Usuage"), React.createElement("h5", {
@@ -47878,7 +47731,7 @@ var App = function App() {
     className: "language-bash line-numbers"
   }, React.createElement("code", null, INSTALL_CODE)), React.createElement("h5", {
     className: "mt-4"
-  }, "2. Add the React UI tooltip CSS"), React.createElement("p", null, "This component use React UI's Tooltip component. Install it as a peer dependency"), React.createElement("pre", {
+  }, "2. Add the Reach UI tooltip CSS"), React.createElement("p", null, "This component use Reach UI's Tooltip component. Install it as a peer dependency"), React.createElement("pre", {
     className: "language-javascript line-numbers"
   }, React.createElement("code", null, CSS_CODE)), React.createElement("h5", {
     className: "mt-4"
@@ -47888,15 +47741,21 @@ var App = function App() {
     fluid: true
   }, React.createElement("h3", {
     className: "mb-4"
-  }, "API"), React.createElement(reactstrap_1.Table, null, React.createElement("thead", null, React.createElement("tr", null, React.createElement("th", null, "Prop"), React.createElement("th", null, "Type"), React.createElement("th", null, "optional"))), React.createElement("tbody", null, React.createElement("tr", null, React.createElement("th", null, "data"), React.createElement("td", null, React.createElement("code", null, "WeekData")), React.createElement("td", null, "no"))), React.createElement("h5", {
+  }, "API"), React.createElement(reactstrap_1.Table, null, React.createElement("thead", null, React.createElement("tr", null, React.createElement("th", null, "Prop"), React.createElement("th", null, "Type"), React.createElement("th", null, "optional"))), React.createElement("tbody", null, React.createElement("tr", null, React.createElement("th", null, "data"), React.createElement("td", null, React.createElement("code", null, "WeekData")), React.createElement("td", null, "no")), React.createElement("tr", null, React.createElement("th", null, "gridSize"), React.createElement("td", null, React.createElement("code", null, "number")), React.createElement("td", null, "yes - default 10")), React.createElement("tr", null, React.createElement("th", null, "fontSize"), React.createElement("td", null, React.createElement("code", null, "string")), React.createElement("td", null, "yes - default 9px"))))), React.createElement(reactstrap_1.Container, {
+    fluid: true
+  }, React.createElement("h5", {
     className: "mt-4 mb-4"
   }, "Interfaces"), React.createElement("h6", null, "WeekData"), React.createElement("pre", {
     className: "language-typescript line-numbers"
-  }, React.createElement("code", null, WEEK_DATA))), React.createElement("hr", null), React.createElement("p", null, "MIT \xA9\uFE0F Harshit Pant 2019")));
+  }, React.createElement("code", null, WEEK_DATA)), React.createElement("h6", null, "Prop"), React.createElement("pre", {
+    className: "language-typescript line-numbers"
+  }, React.createElement("code", null, PROP)), React.createElement("hr", null), React.createElement("p", null, "MIT \xA9\uFE0F ", React.createElement("a", {
+    href: "https://twitter.com/pantharshit00"
+  }, "Harshit Pant"), ' ', "2019")));
 };
 
 ReactDOM.render(React.createElement(App, null), document.getElementById('root'));
-},{"react-app-polyfill/ie11":"node_modules/react-app-polyfill/ie11.js","react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","@reach/tooltip/styles.css":"node_modules/@reach/tooltip/styles.css","../.":"../dist/recontrib.es.production.js","./data":"data.ts","reactstrap":"node_modules/reactstrap/es/index.js","prismjs":"node_modules/prismjs/prism.js","prismjs/components/prism-bash":"node_modules/prismjs/components/prism-bash.js","prismjs/components/prism-javascript":"node_modules/prismjs/components/prism-javascript.js","prismjs/components/prism-typescript":"node_modules/prismjs/components/prism-typescript.js","prismjs/plugins/line-numbers/prism-line-numbers":"node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js","prismjs/themes/prism-tomorrow.css":"node_modules/prismjs/themes/prism-tomorrow.css","prismjs/plugins/line-numbers/prism-line-numbers.css":"node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css","bootstrap/dist/css/bootstrap.min.css":"node_modules/bootstrap/dist/css/bootstrap.min.css"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react-app-polyfill/ie11":"node_modules/react-app-polyfill/ie11.js","react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","@reach/tooltip/styles.css":"node_modules/@reach/tooltip/styles.css","../.":"../dist/recontrib.es.production.js","reactstrap":"node_modules/reactstrap/es/index.js","prismjs":"node_modules/prismjs/prism.js","prismjs/components/prism-bash":"node_modules/prismjs/components/prism-bash.js","prismjs/components/prism-javascript":"node_modules/prismjs/components/prism-javascript.js","prismjs/components/prism-typescript":"node_modules/prismjs/components/prism-typescript.js","prismjs/plugins/line-numbers/prism-line-numbers":"node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js","prismjs/themes/prism-tomorrow.css":"node_modules/prismjs/themes/prism-tomorrow.css","prismjs/plugins/line-numbers/prism-line-numbers.css":"node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css","bootstrap/dist/css/bootstrap.min.css":"node_modules/bootstrap/dist/css/bootstrap.min.css"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -47924,7 +47783,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57926" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49714" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
