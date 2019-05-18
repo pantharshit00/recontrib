@@ -3,8 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import '@reach/tooltip/styles.css';
 import { Recontrib } from '../.';
-import { data } from './data';
-import { Container, Table } from 'reactstrap';
+import { Container, Table, Input, Form, FormGroup } from 'reactstrap';
 import 'prismjs';
 import 'prismjs/components/prism-bash';
 import 'prismjs/components/prism-javascript';
@@ -27,33 +26,106 @@ import { Recontrib } from 'recontrib';
 const App = () => {
  let [data, setData] = useState([]);
  useEffect(() => {
-   fetch('https://api.github.com/repos/zeit/next.js/commit_history')
+   fetch('https://api.github.com/repos/zeit/next.js/stats/commit_activity')
         .then(res => res.json())
-        .then(res => { setData(data) })
+        .then(res => { setData(res) })
  },[]);
 
  return (
    <div>
-    <Recontrib data={data} />
+    <Recontrib 
+      data={data}
+      gridSize={15}
+      fontSize="12px" 
+    />
    </div>
  )
 }
 `;
 
 const WEEK_DATA = `interface WeekData {
-  days: number[];
-  total: number;
-  week: number;
+  days: number[]; // commits in individual days in the week
+  total: number; // total number commits in the week
+  week: number; // Timestamp in seconds of the seconds of the starting of the week
+}`;
+
+const PROP = `interface Props {
+  data: Array<WeekData>;
+  gridSize?: number;
+  fontSize?: string;
 }`;
 
 const App = () => {
+  let [repoData, setData] = React.useState({ error: null, data: [] });
+  const [{ repo, owner }, setForm] = React.useState({
+    repo: 'prisma',
+    owner: 'prisma',
+  });
+  let [url, setUrl] = React.useState(
+    `https://api.github.com/repos/${owner}/${repo}/stats/commit_activity`
+  );
+  React.useEffect(() => {
+    fetch(url)
+      .then(res => {
+        if (res.status === 404) {
+          throw new Error('Not found');
+        }
+        return res.json();
+      })
+      .then(res => {
+        setData({ error: null, data: res });
+      })
+      .catch(err => {
+        setData({ error: err.message, data: [] });
+      });
+  }, [url]);
   return (
     <Container>
       <Container fluid>
-        <h1 className="mt-4 p-2">Recontrib</h1>
+        <h1 className="mt-4 py-2">Recontrib</h1>
         <p>React Component that implements GitHub Commit Graph</p>
       </Container>
-      <Recontrib data={data} />
+      <Container fluid>
+        <Form
+          onSubmit={e => {
+            e.preventDefault();
+            setUrl(
+              `https://api.github.com/repos/${owner}/${repo}/stats/commit_activity`
+            );
+          }}
+          inline
+        >
+          <Input
+            onChange={e => {
+              setForm({ repo, owner: e.currentTarget.value });
+            }}
+            value={owner}
+            className="mr-2"
+            type="text"
+            id="repo"
+            placeholder="owner"
+          />{' '}
+          /
+          <Input
+            id="owner"
+            value={repo}
+            onChange={e => {
+              setForm({ owner, repo: e.currentTarget.value });
+            }}
+            className="ml-2"
+            type="text"
+            placeholder="repo"
+          />
+          <Input type="submit" hidden={true} />
+        </Form>
+        {repoData.data && repoData.data.length ? (
+          <Recontrib data={repoData.data} gridSize={15} fontSize="12px" />
+        ) : repoData.error ? (
+          <p>{repoData.error}</p>
+        ) : (
+          'Loading....'
+        )}
+      </Container>
       <hr />
       <Container fluid className="mt-4">
         <h3>Usuage</h3>
@@ -93,15 +165,38 @@ const App = () => {
               </td>
               <td>no</td>
             </tr>
+            <tr>
+              <th>gridSize</th>
+              <td>
+                <code>number</code>
+              </td>
+              <td>yes - default 10</td>
+            </tr>
+            <tr>
+              <th>fontSize</th>
+              <td>
+                <code>string</code>
+              </td>
+              <td>yes - default 9px</td>
+            </tr>
           </tbody>
-          <h5 className="mt-4 mb-4">Interfaces</h5>
-          <h6>WeekData</h6>
-          <pre className="language-typescript line-numbers">
-            <code>{WEEK_DATA}</code>
-          </pre>
         </Table>
+      </Container>
+      <Container fluid>
+        <h5 className="mt-4 mb-4">Interfaces</h5>
+        <h6>WeekData</h6>
+        <pre className="language-typescript line-numbers">
+          <code>{WEEK_DATA}</code>
+        </pre>
+        <h6>Prop</h6>
+        <pre className="language-typescript line-numbers">
+          <code>{PROP}</code>
+        </pre>
         <hr />
-        <p>MIT ©️ Harshit Pant 2019</p>
+        <p>
+          MIT ©️ <a href="https://twitter.com/pantharshit00">Harshit Pant</a>{' '}
+          2019
+        </p>
       </Container>
     </Container>
   );

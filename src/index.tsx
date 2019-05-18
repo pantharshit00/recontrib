@@ -1,6 +1,5 @@
 import * as React from 'react';
 import dayjs from 'dayjs';
-import { LightenDarkenColor } from './utils/darkenColor';
 import { TriangleTooltip } from './utils/ToolTip';
 
 interface WeekData {
@@ -30,10 +29,19 @@ const MONTHS = [
   'Dec',
 ];
 
-const ZERO_COLOR = '#ebedf0';
-const BASE_GREEN_COLOR = '#7bc96f';
+const COLORS = ['#ebedf0', '#c6e48b', '#7bc96f', '#239a3b', '#196127'];
 
-export const Recontrib: React.FC<{ data: Array<WeekData> }> = ({ data }) => {
+interface Props {
+  data: Array<WeekData>;
+  gridSize?: number;
+  fontSize?: string;
+}
+
+export const Recontrib: React.FC<Props> = ({
+  data,
+  gridSize = 10,
+  fontSize = '9px',
+}) => {
   const finalData = React.useMemo(() => {
     let massagedData: Array<Data> = [];
 
@@ -58,17 +66,21 @@ export const Recontrib: React.FC<{ data: Array<WeekData> }> = ({ data }) => {
 
   let weekCount = 1;
   return (
-    <svg width="748" height="112" style={{ boxSizing: 'border-box' }}>
+    <svg
+      width={(gridSize + 4) * 54}
+      height={(gridSize + 4) * 8}
+      style={{ boxSizing: 'border-box' }}
+    >
       <g transform="translate(10, 20)">
         {finalData.map(val => {
           return (
             <React.Fragment key={`gh-chart-val-${val.id}`}>
               <text
-                x={weekCount * 14}
+                x={weekCount * (gridSize + 4)}
                 y={-7}
                 style={{
                   fill: '#767676',
-                  fontSize: '9px',
+                  fontSize,
                   fontFamily: 'sans-serif',
                 }}
               >
@@ -78,7 +90,7 @@ export const Recontrib: React.FC<{ data: Array<WeekData> }> = ({ data }) => {
                 return (
                   <g
                     key={`gh-chart-week-${weekCount}`}
-                    transform={`translate(${weekCount++ * 14},0)`}
+                    transform={`translate(${weekCount++ * (gridSize + 4)},0)`}
                   >
                     {week.days.map((val, idx) => (
                       <TriangleTooltip
@@ -95,14 +107,16 @@ export const Recontrib: React.FC<{ data: Array<WeekData> }> = ({ data }) => {
                         <rect
                           id={`gh-chart-week-${weekCount}-day-${idx}`}
                           x={0}
-                          y={idx * 13}
+                          y={idx * (gridSize + 3)}
                           fill={
-                            val === 0
-                              ? ZERO_COLOR
-                              : LightenDarkenColor(BASE_GREEN_COLOR, -val)
+                            COLORS[
+                              Math.ceil(
+                                (Math.min(val, 50) / 50) * COLORS.length
+                              )
+                            ]
                           }
-                          width={10}
-                          height={10}
+                          width={gridSize}
+                          height={gridSize}
                         />
                       </TriangleTooltip>
                     ))}
@@ -113,23 +127,23 @@ export const Recontrib: React.FC<{ data: Array<WeekData> }> = ({ data }) => {
           );
         })}
         <text
-          style={{ fill: '#767676', fontSize: '9px', fontFamily: 'sans-serif' }}
+          style={{ fill: '#767676', fontSize, fontFamily: 'sans-serif' }}
           dx="-10"
-          dy="22"
+          dy={gridSize + 8}
         >
           Mon
         </text>
         <text
-          style={{ fill: '#767676', fontSize: '9px', fontFamily: 'sans-serif' }}
+          style={{ fill: '#767676', fontSize, fontFamily: 'sans-serif' }}
           dx="-10"
-          dy="48"
+          dy={(gridSize + 6) * 3}
         >
           Wed
         </text>
         <text
-          style={{ fill: '#767676', fontSize: '9px', fontFamily: 'sans-serif' }}
+          style={{ fill: '#767676', fontSize, fontFamily: 'sans-serif' }}
           dx="-10"
-          dy="73"
+          dy={(gridSize + 5) * 5}
         >
           Fri
         </text>
