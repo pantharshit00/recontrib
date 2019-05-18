@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "homepage": "https://pantharshit00.github.io/recontrib",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --public-url /recontrib/"
   },
   "dependencies": {
     "@reach/tooltip": "^0.2.0",
