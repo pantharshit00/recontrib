@@ -1,11 +1,17 @@
 {
   "name": "recontrib",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "MIT",
+  "homepage": "https://pantharshit00.github.io/recontrib",
+  "author": "Harshit Pant <pantharshit00@gmail.com>",
   "main": "dist/index.js",
   "umd:main": "dist/recontrib.umd.production.js",
   "module": "dist/recontrib.es.production.js",
   "typings": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pantharshit00/recontrib"
+  },
   "files": [
     "dist"
   ],

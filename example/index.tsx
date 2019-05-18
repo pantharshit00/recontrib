@@ -61,9 +61,9 @@ const App = () => {
         <pre className="language-bash line-numbers">
           <code>{INSTALL_CODE}</code>
         </pre>
-        <h5 className="mt-4">2. Add the React UI tooltip CSS</h5>
+        <h5 className="mt-4">2. Add the Reach UI tooltip CSS</h5>
         <p>
-          This component use React UI's Tooltip component. Install it as a peer
+          This component use Reach UI's Tooltip component. Install it as a peer
           dependency
         </p>
         <pre className="language-javascript line-numbers">
