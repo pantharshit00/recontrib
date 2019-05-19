@@ -47702,10 +47702,16 @@ var App = function App() {
     value: owner,
     className: "mr-2",
     type: "text",
+    style: {
+      maxWidth: '10rem'
+    },
     id: "repo",
     placeholder: "owner"
   }), ' ', "/", React.createElement(reactstrap_1.Input, {
     id: "owner",
+    style: {
+      maxWidth: '10rem'
+    },
     value: repo,
     onChange: function onChange(e) {
       setForm({
@@ -47788,7 +47794,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49563" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49830" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
