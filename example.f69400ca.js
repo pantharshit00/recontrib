@@ -30942,13 +30942,13 @@ var d = function d(t, e) {
 },
     h = function h(_ref) {
   var r = _ref.children,
-      a = _ref.label,
+      n = _ref.label,
       h = _ref.ariaLabel;
 
-  var _n = (0, _tooltip.useTooltip)(),
-      _n2 = _slicedToArray(_n, 2),
-      f = _n2[0],
-      m = _n2[1],
+  var _a = (0, _tooltip.useTooltip)(),
+      _a2 = _slicedToArray(_a, 2),
+      f = _a2[0],
+      m = _a2[1],
       c = m.isVisible,
       b = m.triggerRect;
 
@@ -30964,7 +30964,7 @@ var d = function d(t, e) {
       borderBottom: "10px solid black"
     }
   })), (0, _react.createElement)(_tooltip.TooltipPopup, Object.assign({}, m, {
-    label: a,
+    label: n,
     ariaLabel: h,
     style: {
       background: "black",
@@ -30984,7 +30984,7 @@ var d = function d(t, e) {
       _ref2$gridSize = _ref2.gridSize,
       o = _ref2$gridSize === void 0 ? 10 : _ref2$gridSize,
       _ref2$fontSize = _ref2.fontSize,
-      n = _ref2$fontSize === void 0 ? "9px" : _ref2$fontSize;
+      a = _ref2$fontSize === void 0 ? "9px" : _ref2$fontSize;
   var l = (0, _react.useMemo)(function () {
     var t = [];
     return i.forEach(function (e) {
@@ -31016,9 +31016,10 @@ var d = function d(t, e) {
     }, (0, _react.createElement)("text", {
       x: s * (o + 4),
       y: -7,
+      visibility: i.weeks.length > 2 ? "visible" : "hidden",
       style: {
         fill: "#767676",
-        fontSize: n,
+        fontSize: a,
         fontFamily: "sans-serif"
       }
     }, i.month), i.weeks.map(function (e) {
@@ -31042,7 +31043,7 @@ var d = function d(t, e) {
   }), (0, _react.createElement)("text", {
     style: {
       fill: "#767676",
-      fontSize: n,
+      fontSize: a,
       fontFamily: "sans-serif"
     },
     dx: "-10",
@@ -31050,7 +31051,7 @@ var d = function d(t, e) {
   }, "Mon"), (0, _react.createElement)("text", {
     style: {
       fill: "#767676",
-      fontSize: n,
+      fontSize: a,
       fontFamily: "sans-serif"
     },
     dx: "-10",
@@ -31058,7 +31059,7 @@ var d = function d(t, e) {
   }, "Wed"), (0, _react.createElement)("text", {
     style: {
       fill: "#767676",
-      fontSize: n,
+      fontSize: a,
       fontFamily: "sans-serif"
     },
     dx: "-10",
@@ -47718,11 +47719,15 @@ var App = function App() {
   }), React.createElement(reactstrap_1.Input, {
     type: "submit",
     hidden: true
-  })), repoData.data && repoData.data.length ? React.createElement(_1.Recontrib, {
+  })), React.createElement("div", {
+    style: {
+      overflow: 'auto'
+    }
+  }, repoData.data && repoData.data.length ? React.createElement(_1.Recontrib, {
     data: repoData.data,
     gridSize: 15,
     fontSize: "12px"
-  }) : repoData.error ? React.createElement("p", null, repoData.error) : 'Loading....'), React.createElement("hr", null), React.createElement(reactstrap_1.Container, {
+  }) : repoData.error ? React.createElement("p", null, repoData.error) : 'Loading....')), React.createElement("hr", null), React.createElement(reactstrap_1.Container, {
     fluid: true,
     className: "mt-4"
   }, React.createElement("h3", null, "Usuage"), React.createElement("h5", {
@@ -47783,7 +47788,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49714" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49563" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
