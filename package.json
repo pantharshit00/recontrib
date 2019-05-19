@@ -52,7 +52,6 @@
   "dependencies": {
     "@reach/portal": "^0.2.1",
     "@reach/tooltip": "^0.2.0",
-    "dayjs": "^1.8.14",
-    "react-spring": "^8.0.20"
+    "dayjs": "^1.8.14"
   }
 }
