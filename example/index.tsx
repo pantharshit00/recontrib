@@ -118,13 +118,15 @@ const App = () => {
           />
           <Input type="submit" hidden={true} />
         </Form>
-        {repoData.data && repoData.data.length ? (
-          <Recontrib data={repoData.data} gridSize={15} fontSize="12px" />
-        ) : repoData.error ? (
-          <p>{repoData.error}</p>
-        ) : (
-          'Loading....'
-        )}
+        <div style={{ overflow: 'auto' }}>
+          {repoData.data && repoData.data.length ? (
+            <Recontrib data={repoData.data} gridSize={15} fontSize="12px" />
+          ) : repoData.error ? (
+            <p>{repoData.error}</p>
+          ) : (
+            'Loading....'
+          )}
+        </div>
       </Container>
       <hr />
       <Container fluid className="mt-4">

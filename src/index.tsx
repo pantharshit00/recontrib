@@ -78,6 +78,7 @@ export const Recontrib: React.FC<Props> = ({
               <text
                 x={weekCount * (gridSize + 4)}
                 y={-7}
+                visibility={val.weeks.length > 2 ? 'visible' : 'hidden'}
                 style={{
                   fill: '#767676',
                   fontSize,
