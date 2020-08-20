@@ -4,7 +4,7 @@ React Component that implements GiHub's commit graph UI. https://pantharshit00.g
 
 ![image](https://user-images.githubusercontent.com/22195362/57941632-17990f80-78ed-11e9-86b3-939f7ac1209b.png)
 
-## Usuage
+## Usage
 
 1. Add the Reach UI tooltip CSS
 
